@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "8ZFuAU62Di6RE2CrLrvRdvvYplgQar/YfurD7qQOYnQ=",
+  "Source": "PermissionsWeb.Api",
+  "BasePath": "_content/PermissionsWeb.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
