@@ -54,8 +54,7 @@
               "RelativeToolTip": "PermissionsWeb.Domain\\Permiso.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T22:06:42.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T22:06:42.497Z"
             },
             {
               "$type": "Document",
@@ -65,7 +64,7 @@
               "RelativeDocumentMoniker": "PermissionsWeb.Application\\ViewModel\\PermisoViewModel.cs",
               "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Application\\ViewModel\\PermisoViewModel.cs",
               "RelativeToolTip": "PermissionsWeb.Application\\ViewModel\\PermisoViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAwAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-03T22:03:28.872Z",
               "EditorCaption": ""
@@ -80,8 +79,7 @@
               "RelativeToolTip": "PermissionsWeb.Api\\Controllers\\WeatherForecastController.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T21:43:44.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T21:43:44.772Z"
             }
           ]
         }
