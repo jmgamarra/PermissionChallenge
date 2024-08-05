@@ -1,15 +1,21 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Configuration;
 using Nest;
+using Newtonsoft.Json;
+using PermissionsWeb.Application.Services;
 using PermissionsWeb.Domain;
 
 public class GetPermisosQueryHandler : IRequestHandler<GetPermisosQuery, IEnumerable<Permiso>>
 {
     //private readonly IUnitOfWork _unitOfWork;
     private readonly IElasticClient _elasticClient;
-
-    public GetPermisosQueryHandler(IElasticClient elasticClient)
+    private readonly KafkaProducerService _kafkaProducerService;
+    private readonly IConfiguration _configuration;
+    public GetPermisosQueryHandler(IElasticClient elasticClient, KafkaProducerService kafkaProducerService, IConfiguration configuration)
     {
         _elasticClient = elasticClient;
+        _kafkaProducerService = kafkaProducerService;
+        _configuration = configuration;
     }
 
     public async Task<IEnumerable<Permiso>> Handle(GetPermisosQuery request, CancellationToken cancellationToken)
@@ -24,6 +30,18 @@ public class GetPermisosQueryHandler : IRequestHandler<GetPermisosQuery, IEnumer
         {
             throw new Exception("Failed to retrieve documents from Elasticsearch.");
         }
+
+        // Add Kafka message
+        var message = new
+        {
+            Id = Guid.NewGuid(),
+            NameOperation = "get"
+        };
+
+        var topic = _configuration["Kafka:Topic"];
+        await _kafkaProducerService.ProduceAsync(topic, JsonConvert.SerializeObject(message));
+
+
 
         return searchResponse.Documents;
     }

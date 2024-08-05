@@ -1,5 +1,8 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Configuration;
 using Nest;
+using Newtonsoft.Json;
+using PermissionsWeb.Application.Services;
 using PermissionsWeb.Domain;
 using System.Security;
 
@@ -7,11 +10,14 @@ public class ModifyPermisoCommandHandler : IRequestHandler<ModifyPermisoCommand,
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IElasticClient _elasticClient;
-
-    public ModifyPermisoCommandHandler(IElasticClient elasticClient, IUnitOfWork unitOfWork)
+    private readonly KafkaProducerService _kafkaProducerService;
+    private readonly IConfiguration _configuration;
+    public ModifyPermisoCommandHandler(IElasticClient elasticClient, IUnitOfWork unitOfWork, KafkaProducerService kafkaProducerService, IConfiguration configuration)
     {
         _unitOfWork = unitOfWork;
         _elasticClient = elasticClient;
+        _kafkaProducerService = kafkaProducerService;
+        _configuration = configuration;
     }
 
     public async Task<Permiso> Handle(ModifyPermisoCommand request, CancellationToken cancellationToken)
@@ -48,6 +54,18 @@ public class ModifyPermisoCommandHandler : IRequestHandler<ModifyPermisoCommand,
         {
             throw new Exception("Updating failed in Elasticsearch.");
         }
+
+        //Actualizar kafka
+        var message = new
+        {
+            Id = Guid.NewGuid(),
+            NameOperation = "modify"
+        };
+
+        var topic = _configuration["Kafka:Topic"];
+        await _kafkaProducerService.ProduceAsync(topic, JsonConvert.SerializeObject(message));
+
+
 
         return oPermiso;
     }

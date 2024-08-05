@@ -1,5 +1,8 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Configuration;
 using Nest;
+using Newtonsoft.Json;
+using PermissionsWeb.Application.Services;
 using PermissionsWeb.Domain;
 using System.Security;
 
@@ -7,11 +10,15 @@ public class RequestPermisoCommandHandler : IRequestHandler<RequestPermisoComman
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IElasticClient _elasticClient;
+    private readonly KafkaProducerService _kafkaProducerService;
+    private readonly IConfiguration _configuration;
 
-    public RequestPermisoCommandHandler(IElasticClient elasticClient, IUnitOfWork unitOfWork)
+    public RequestPermisoCommandHandler(IElasticClient elasticClient, IUnitOfWork unitOfWork, KafkaProducerService kafkaProducerService, IConfiguration configuration)
     {
         _unitOfWork = unitOfWork;
         _elasticClient = elasticClient;
+        _kafkaProducerService = kafkaProducerService;
+        _configuration = configuration;
     }
 
     public async Task<Permiso> Handle(RequestPermisoCommand request, CancellationToken cancellationToken)
@@ -36,6 +43,17 @@ public class RequestPermisoCommandHandler : IRequestHandler<RequestPermisoComman
             FechaPermiso = oPermiso.FechaPermiso,
             TipoPermisoId = oPermiso.TipoPermisoId
         });
+
+        // send to topic
+        var message = new
+        {
+            Id = Guid.NewGuid(),
+            NameOperation = "request"
+        };
+
+        var topic = _configuration["Kafka:Topic"];
+        await _kafkaProducerService.ProduceAsync(topic, JsonConvert.SerializeObject(message));
+
 
         if (!response.IsValid)
         {

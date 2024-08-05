@@ -1,25 +1,28 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER app
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
+# Usar una imagen base oficial de .NET para el SDK
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["PermissionsWeb.Api/PermissionsWeb.Api.csproj", "PermissionsWeb.Api/"]
-RUN dotnet restore "./PermissionsWeb.Api/PermissionsWeb.Api.csproj"
-COPY . .
-WORKDIR "/src/PermissionsWeb.Api"
-RUN dotnet build "./PermissionsWeb.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./PermissionsWeb.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+
+# Copiar archivos de proyecto y restaurar dependencias
+COPY *.sln .
+COPY PermissionsWeb.Api/*.csproj ./PermissionsWeb.Api/
+COPY PermissionsWeb.Application/*.csproj ./PermissionsWeb.Application/
+COPY PermissionsWeb.Data/*.csproj ./PermissionsWeb.Data/
+COPY PermissionsWeb.Domain/*.csproj ./PermissionsWeb.Domain/
+RUN dotnet restore
+
+# Copiar el resto de los archivos y construir la aplicación
+COPY . .
+WORKDIR /app/PermissionsWeb.Api
+RUN dotnet publish -c Release -o out
+
+# Usar una imagen base oficial de .NET para el runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/PermissionsWeb.Api/out .
+
+# Exponer el puerto que tu API usa
+EXPOSE 80
+EXPOSE 443
+
+# Comando para ejecutar la aplicación
 ENTRYPOINT ["dotnet", "PermissionsWeb.Api.dll"]
