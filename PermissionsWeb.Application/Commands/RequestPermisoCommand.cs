@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using PermissionsWeb.Domain;
 
-public class RequestPermissionCommand : IRequest<Permiso>
+public class RequestPermisoCommand : IRequest<Permiso>
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string Nombre { get; set; }
+    public string Apellido { get; set; }
+    public DateTime Fecha { get; set; }
+    public int TipoId { get; set; }
 }

@@ -1,58 +1,65 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PermissionsWeb.Application.DTOs;
-using PermissionsWeb.Application.Interfaces;
-using PermissionsWeb.Application.ViewModel;
-using PermissionsWeb.Domain;
-using System.Security;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
 public class PermisosController : ControllerBase
 {
-    private readonly IPermisoService _permissionService;
+    private readonly IMediator _mediator;
 
-    public PermisosController(IPermisoService permisoService)
+    public PermisosController(IMediator mediator)
     {
-        _permissionService = permisoService;
+        _mediator = mediator;
     }
 
+
     [HttpPost]
-    public async Task<IActionResult> RequestPermiso([FromBody] PermisoDTO permisoRequest)
+    public async Task<IActionResult> RequestPermiso([FromBody] RequestPermisoCommand command)
     {
-        var oPermission = new Permiso
-        {
-            NombreEmpleado=permisoRequest.Nombre,
-            ApellidoEmpleado=permisoRequest.Apellido,
-            FechaPermiso=permisoRequest.Fecha,
-            TipoPermisoId=permisoRequest.TipoPermiso
-        };
-        var createdPermission = await _permissionService.RequestPermisoAsync(oPermission);
-        return CreatedAtAction(nameof(GetPermisoById), new { id = createdPermission.Id }, createdPermission);
+        var oPermiso = await _mediator.Send(command);
+        return CreatedAtAction(nameof(GetPermisoById), new { id = oPermiso.Id }, oPermiso);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> ModifyPermiso(int id, [FromBody] Permiso permission)
+    public async Task<IActionResult> ModifyPermiso(int id, [FromBody] ModifyPermisoCommand command)
     {
-        var updatedPermission = await _permissionService.ModifyPermisoAsync(id, permission);
-        return Ok(updatedPermission);
+        if (id != command.Id)
+        {
+            return BadRequest("ID does not exist");
+        }
+
+        try
+        {
+            var user = await _mediator.Send(command);
+            return Ok(user);
+        }
+        catch (Exception ex)
+        {
+            return NotFound(ex.Message);
+        }
     }
 
     [HttpGet]
     public async Task<IActionResult> GetPermisos()
     {
-        var permissions = await _permissionService.GetPermisosAsync();
-        return Ok(permissions);
+        try
+        {
+            var query = new GetPermisosQuery();
+            var users = await _mediator.Send(query);
+            return Ok(users);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
+        }
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetPermisoById(int id)
     {
-        var permission = await _permissionService.GetPermisoByIdAsync(id);
-        if (permission == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(permission);
+        var query = new GetPermisoByIdQuery { Id = id };
+        var user = await _mediator.Send(query);
+        if (user == null) return NotFound();
+        return Ok(user);
     }
 }

@@ -1,21 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Nest;
-using PermissionsWeb.Application.Interfaces;
-using PermissionsWeb.Application;
 
-        var builder = WebApplication.CreateBuilder(args);
-        // Log the current directory
-        //Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
-
-        // Log the environment name
-        //var environmentName = builder.Environment.EnvironmentName;
-        //Console.WriteLine($"Environment: {environmentName}");
+var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("N5Connection");
 
-        // Log the connection string to ensure it's correct
-       // Console.WriteLine($"Connection String: {connectionString}");
         // Configurar Elasticsearch
         //var elasticsearchSettings = builder.Configuration.GetSection("Elasticsearch");
         //var url = elasticsearchSettings["Url"];
@@ -38,7 +27,6 @@ using PermissionsWeb.Application;
         builder.Services.AddSwaggerGen();
 
         // Add DI
-        builder.Services.AddScoped<IPermisoService, PermisoService>();
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
 

@@ -1,27 +1,27 @@
 ﻿using MediatR;
-using PermissionsWeb.Application.Interfaces;
 using PermissionsWeb.Domain;
-using System.Security;
 
-public class RequestPermisoCommandHandler : IRequestHandler<RequestPermissionCommand, Permiso>
+public class RequestPermisoCommandHandler : IRequestHandler<RequestPermisoCommand, Permiso>
 {
-    private readonly IPermisoService _permisoService;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public RequestPermisoCommandHandler(IPermisoService permissionService)
+    public RequestPermisoCommandHandler(IUnitOfWork unitOfWork)
     {
-        _permisoService = permissionService;
+        _unitOfWork = unitOfWork;
     }
 
-    public async Task<Permiso> Handle(RequestPermissionCommand request, CancellationToken cancellationToken)
+    public async Task<Permiso> Handle(RequestPermisoCommand request, CancellationToken cancellationToken)
     {
+
         var oPermiso = new Permiso
         {
-            NombreEmpleado = request.Name,
-            ApellidoEmpleado = request.Description,
-            FechaPermiso = DateTime.UtcNow,
-            TipoPermisoId=12
+            NombreEmpleado = request.Nombre,
+            ApellidoEmpleado = request.Apellido,
+            FechaPermiso = request.Fecha,
+            TipoPermisoId = request.TipoId,
         };
-
-        return await _permisoService.RequestPermisoAsync(oPermiso);
+        await _unitOfWork.Permissions.AddAsync(oPermiso);
+        await _unitOfWork.SaveChangesAsync();
+        return oPermiso;
     }
 }
