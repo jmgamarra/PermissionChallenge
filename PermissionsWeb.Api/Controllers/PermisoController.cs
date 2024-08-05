@@ -30,8 +30,8 @@ public class PermisosController : ControllerBase
 
         try
         {
-            var user = await _mediator.Send(command);
-            return Ok(user);
+            var oPermiso = await _mediator.Send(command);
+            return Ok(oPermiso);
         }
         catch (Exception ex)
         {

@@ -1,13 +1,17 @@
 ﻿using MediatR;
+using Nest;
 using PermissionsWeb.Domain;
+using System.Security;
 
 public class ModifyPermisoCommandHandler : IRequestHandler<ModifyPermisoCommand, Permiso>
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IElasticClient _elasticClient;
 
-    public ModifyPermisoCommandHandler(IUnitOfWork unitOfWork)
+    public ModifyPermisoCommandHandler(IElasticClient elasticClient, IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
+        _elasticClient = elasticClient;
     }
 
     public async Task<Permiso> Handle(ModifyPermisoCommand request, CancellationToken cancellationToken)
@@ -26,6 +30,25 @@ public class ModifyPermisoCommandHandler : IRequestHandler<ModifyPermisoCommand,
        
         await _unitOfWork.Permissions.UpdateAsync(oPermiso);
         await _unitOfWork.SaveChangesAsync();
+
+        // Actualizar en Elasticsearch
+        var response = await _elasticClient.UpdateAsync<Permiso>(request.Id, u => u
+            .Index("permissions")
+            .Doc(new Permiso
+            {
+                NombreEmpleado = oPermiso.NombreEmpleado,
+                ApellidoEmpleado = oPermiso.ApellidoEmpleado,
+                FechaPermiso = oPermiso.FechaPermiso,
+                TipoPermisoId=oPermiso.TipoPermisoId,
+                Id=oPermiso.Id
+            })
+        );
+
+        if (!response.IsValid)
+        {
+            throw new Exception("Updating failed in Elasticsearch.");
+        }
+
         return oPermiso;
     }
 }

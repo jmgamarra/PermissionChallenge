@@ -1,24 +1,28 @@
+using Elasticsearch.Net;
 using Microsoft.EntityFrameworkCore;
+using Nest;
 
 var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("N5Connection");
 
-        // Configurar Elasticsearch
-        //var elasticsearchSettings = builder.Configuration.GetSection("Elasticsearch");
-        //var url = elasticsearchSettings["Url"];
-        //var index = elasticsearchSettings["Index"];
+// Configurar Elasticsearch
+var elasticsearchSettings = builder.Configuration.GetSection("Elasticsearch");
+var url = elasticsearchSettings["Url"];
+var index = elasticsearchSettings["Index"];
 
-        //var settings = new ConnectionSettings(new Uri(url))
-        //    .DefaultIndex(index);
+var settings = new ConnectionSettings(new Uri(url))
+     .DefaultIndex(index)
+    .ServerCertificateValidationCallback(CertificateValidations.AllowAll)
+    .DisableDirectStreaming();
 
-        //var client = new ElasticClient(settings);
+var client = new ElasticClient(settings);
 
-        //builder.Services.AddSingleton<IElasticClient>(client);
+builder.Services.AddSingleton<IElasticClient>(client);
 
-        // Add services to the container.
-        builder.Services.AddDbContext<PermissionsDbContext>(options =>
+// Add services to the container.
+builder.Services.AddDbContext<PermissionsDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("N5Connection")));
 
         builder.Services.AddControllers();

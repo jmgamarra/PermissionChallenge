@@ -1,17 +1,30 @@
 ﻿using MediatR;
+using Nest;
 using PermissionsWeb.Domain;
 
 public class GetPermisosQueryHandler : IRequestHandler<GetPermisosQuery, IEnumerable<Permiso>>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    //private readonly IUnitOfWork _unitOfWork;
+    private readonly IElasticClient _elasticClient;
 
-    public GetPermisosQueryHandler(IUnitOfWork unitOfWork)
+    public GetPermisosQueryHandler(IElasticClient elasticClient)
     {
-        _unitOfWork = unitOfWork;
+        _elasticClient = elasticClient;
     }
 
     public async Task<IEnumerable<Permiso>> Handle(GetPermisosQuery request, CancellationToken cancellationToken)
     {
-        return await _unitOfWork.Permissions.GetAllAsync();
+        var searchResponse = await _elasticClient.SearchAsync<Permiso>(s => s
+            .Index("permissions")
+            .From(0)
+            .Size(1000) // Ajusta el tamaño según tus necesidades
+        );
+
+        if (!searchResponse.IsValid)
+        {
+            throw new Exception("Failed to retrieve documents from Elasticsearch.");
+        }
+
+        return searchResponse.Documents;
     }
 }
