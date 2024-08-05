@@ -1,7 +1,48 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|solutionrelative:permissionsweb.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|solutionrelative:permissionsweb.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.api\\permissionsweb.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|solutionrelative:permissionsweb.api\\permissionsweb.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|solutionrelative:permissionsweb.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.api\\controllers\\permisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02BC2FF6-9D4D-4121-AB0D-A73FFBC637E3}|PermissionsWeb.Api\\PermissionsWeb.Api.csproj|solutionrelative:permissionsweb.api\\controllers\\permisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF1887E5-E430-40D8-A3C3-B22B8E84CE73}|PermissionsWeb.Application\\PermissionsWeb.Application.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.application\\dtos\\permisodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF1887E5-E430-40D8-A3C3-B22B8E84CE73}|PermissionsWeb.Application\\PermissionsWeb.Application.csproj|solutionrelative:permissionsweb.application\\dtos\\permisodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF1887E5-E430-40D8-A3C3-B22B8E84CE73}|PermissionsWeb.Application\\PermissionsWeb.Application.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.application\\viewmodel\\permisoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF1887E5-E430-40D8-A3C3-B22B8E84CE73}|PermissionsWeb.Application\\PermissionsWeb.Application.csproj|solutionrelative:permissionsweb.application\\viewmodel\\permisoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF1887E5-E430-40D8-A3C3-B22B8E84CE73}|PermissionsWeb.Application\\PermissionsWeb.Application.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.application\\permissionsweb.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DF1887E5-E430-40D8-A3C3-B22B8E84CE73}|PermissionsWeb.Application\\PermissionsWeb.Application.csproj|solutionrelative:permissionsweb.application\\permissionsweb.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A18BB6B5-BEB5-4FE8-85B5-1BF88406B3F2}|PermissionsWeb.Data\\PermissionsWeb.Data.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.data\\permissionsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A18BB6B5-BEB5-4FE8-85B5-1BF88406B3F2}|PermissionsWeb.Data\\PermissionsWeb.Data.csproj|solutionrelative:permissionsweb.data\\permissionsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A18BB6B5-BEB5-4FE8-85B5-1BF88406B3F2}|PermissionsWeb.Data\\PermissionsWeb.Data.csproj|c:\\myprojects\\others\\n5challenge\\n5challenge\\permissionsweb.data\\designtimedbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A18BB6B5-BEB5-4FE8-85B5-1BF88406B3F2}|PermissionsWeb.Data\\PermissionsWeb.Data.csproj|solutionrelative:permissionsweb.data\\designtimedbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +71,129 @@
             {
               "$type": "Bookmark",
               "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PermissionsWeb.Api.http",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\PermissionsWeb.Api.http",
+              "RelativeDocumentMoniker": "PermissionsWeb.Api\\PermissionsWeb.Api.http",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\PermissionsWeb.Api.http",
+              "RelativeToolTip": "PermissionsWeb.Api\\PermissionsWeb.Api.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-08-05T00:45:55.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\Dockerfile",
+              "RelativeDocumentMoniker": "PermissionsWeb.Api\\Dockerfile",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\Dockerfile",
+              "RelativeToolTip": "PermissionsWeb.Api\\Dockerfile",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-04T23:35:35.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "PermissionsWeb.Api\\appsettings.json",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\appsettings.json*",
+              "RelativeToolTip": "PermissionsWeb.Api\\appsettings.json*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-04T22:08:38.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PermisoViewModel.cs",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Application\\ViewModel\\PermisoViewModel.cs",
+              "RelativeDocumentMoniker": "PermissionsWeb.Application\\ViewModel\\PermisoViewModel.cs",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Application\\ViewModel\\PermisoViewModel.cs",
+              "RelativeToolTip": "PermissionsWeb.Application\\ViewModel\\PermisoViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T22:01:50.12Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PermisoDTO.cs",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Application\\DTOs\\PermisoDTO.cs",
+              "RelativeDocumentMoniker": "PermissionsWeb.Application\\DTOs\\PermisoDTO.cs",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Application\\DTOs\\PermisoDTO.cs",
+              "RelativeToolTip": "PermissionsWeb.Application\\DTOs\\PermisoDTO.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T22:00:59.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PermissionsWeb.Application.csproj",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Application\\PermissionsWeb.Application.csproj",
+              "RelativeDocumentMoniker": "PermissionsWeb.Application\\PermissionsWeb.Application.csproj",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Application\\PermissionsWeb.Application.csproj",
+              "RelativeToolTip": "PermissionsWeb.Application\\PermissionsWeb.Application.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-04T22:00:20.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\Program.cs",
+              "RelativeDocumentMoniker": "PermissionsWeb.Api\\Program.cs",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\Program.cs",
+              "RelativeToolTip": "PermissionsWeb.Api\\Program.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAAD8AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T18:40:27.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PermisoController.cs",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\Controllers\\PermisoController.cs",
+              "RelativeDocumentMoniker": "PermissionsWeb.Api\\Controllers\\PermisoController.cs",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Api\\Controllers\\PermisoController.cs",
+              "RelativeToolTip": "PermissionsWeb.Api\\Controllers\\PermisoController.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAAACEAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T18:32:40.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DesignTimeDbContextFactory.cs",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Data\\DesignTimeDbContextFactory.cs",
+              "RelativeDocumentMoniker": "PermissionsWeb.Data\\DesignTimeDbContextFactory.cs",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Data\\DesignTimeDbContextFactory.cs",
+              "RelativeToolTip": "PermissionsWeb.Data\\DesignTimeDbContextFactory.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T18:30:02.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PermissionsDbContext.cs",
+              "DocumentMoniker": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Data\\PermissionsDbContext.cs",
+              "RelativeDocumentMoniker": "PermissionsWeb.Data\\PermissionsDbContext.cs",
+              "ToolTip": "C:\\MyProjects\\Others\\N5Challenge\\N5Challenge\\PermissionsWeb.Data\\PermissionsDbContext.cs",
+              "RelativeToolTip": "PermissionsWeb.Data\\PermissionsDbContext.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAuwB8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T18:07:46.628Z"
             }
           ]
         }

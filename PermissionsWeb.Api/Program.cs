@@ -1,29 +1,64 @@
 using Microsoft.EntityFrameworkCore;
+using Nest;
+using PermissionsWeb.Application.Interfaces;
+using PermissionsWeb.Application;
 
-var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
+        // Log the current directory
+        //Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
 
-// Add services to the container.
-builder.Services.AddDbContext<PermissionsDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("N5Connection")));
+        // Log the environment name
+        //var environmentName = builder.Environment.EnvironmentName;
+        //Console.WriteLine($"Environment: {environmentName}");
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+        // Add services to the container.
+        var connectionString = builder.Configuration.GetConnectionString("N5Connection");
 
-var app = builder.Build();
+        // Log the connection string to ensure it's correct
+       // Console.WriteLine($"Connection String: {connectionString}");
+        // Configurar Elasticsearch
+        //var elasticsearchSettings = builder.Configuration.GetSection("Elasticsearch");
+        //var url = elasticsearchSettings["Url"];
+        //var index = elasticsearchSettings["Index"];
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+        //var settings = new ConnectionSettings(new Uri(url))
+        //    .DefaultIndex(index);
 
-app.UseHttpsRedirection();
+        //var client = new ElasticClient(settings);
 
-app.UseAuthorization();
+        //builder.Services.AddSingleton<IElasticClient>(client);
 
-app.MapControllers();
+        // Add services to the container.
+        builder.Services.AddDbContext<PermissionsDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("N5Connection")));
 
-app.Run();
+        builder.Services.AddControllers();
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
+        // Add DI
+        builder.Services.AddScoped<IPermisoService, PermisoService>();
+        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+        builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
+
+        // Registrar MediatR y los manejadores de CQRS
+        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(RequestPermisoCommandHandler).Assembly));
+
+
+        var app = builder.Build();
+
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+        app.UseHttpsRedirection();
+
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        app.Run();
